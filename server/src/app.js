@@ -11,6 +11,10 @@ app.use(
   })
 );
 
+//clinet endpoint
 app.use('/planets', planetRouter);
+
+//api endpoint
+app.use('api/v1/planets', planetRouter);
 
 module.exports = app;

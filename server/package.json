@@ -4,13 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "watch": "nodemon server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "csv-parse": "^5.3.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
