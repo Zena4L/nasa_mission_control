@@ -1,3 +1,39 @@
+const mongoose = require('mongoose');
+
+const launchSchema = new mongoose.Schema({
+  flightNumber: {
+    type: Number,
+    required: [true, 'FlightNumber required'],
+    default: 100,
+  },
+  lunchDate: {
+    type: Date,
+    required: [true, 'lunchDate required'],
+  },
+  mission: {
+    type: String,
+    required: [true, 'mission required'],
+  },
+  rocket: {
+    type: String,
+    required: [true, 'rocket required'],
+  },
+  target: {
+    type: String,
+    required: [true, 'rocket required'],
+  },
+  upcoming: {
+    type: Boolean,
+    required: [true, 'upcoming required'],
+  },
+  success: {
+    type: Boolean,
+    required: [true, 'upcoming required'],
+    default: true,
+  },
+  customers: [String],
+});
+
 const lunches = new Map();
 
 let latestFlightNumber = 100;
