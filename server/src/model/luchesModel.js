@@ -34,6 +34,8 @@ const launchSchema = new mongoose.Schema({
   customers: [String],
 });
 
+const Launch = mongoose.model('Launch', launchSchema);
+
 const lunches = new Map();
 
 let latestFlightNumber = 100;

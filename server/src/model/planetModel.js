@@ -1,6 +1,16 @@
 const path = require('path');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const { parse } = require('csv-parse');
+
+const planetSchema = new mongoose.Schema({
+  keplerName: {
+    type: String,
+    required: [true, 'name is required'],
+  },
+});
+
+const Planet = mongoose.model('Planet', planetSchema);
 
 const habitablePlanets = [];
 
@@ -28,9 +38,12 @@ function loadPlanetData() {
           // rtrim: true,
         })
       )
-      .on('data', (data) => {
+      .on('data', async (data) => {
         if (isHabitablePlanet(data)) {
-          habitablePlanets.push(data);
+          // habitablePlanets.push(data);
+          await Planet.create({
+            keplerName: data.kepler_name,
+          });
         }
       })
       .on('error', (err) => {
@@ -42,6 +55,10 @@ function loadPlanetData() {
         resolve();
       });
   });
+}
+
+async function getAllPlanets() {
+  return await Planet.find({});
 }
 
 module.exports = {
